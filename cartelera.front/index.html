@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="cartelera">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Cines Zoco Majadahonda</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="lib/bootstrap/css/agency.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <!-- Custom Fonts -->
+    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body id="page-top" class="index">
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header page-scroll">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand page-scroll" href="#page-top">Cines Zoco Majadahonda</a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="hidden">
+                        <a href="#page-top"></a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="#billboard">Cartelera</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="#prices">Precios</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="#coming-soon">Próximamente</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="#contact">Contacto</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container-fluid -->
+    </nav>
+
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="intro-text">
+                <div class="intro-lead-in">Bienvenido a los cines Zoco Majadahonda!</div>
+                <div class="intro-heading">Cine para todos</div>
+                <a href="#billboard" class="page-scroll btn btn-xl">Más información</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Billboard Section -->
+    <section id="billboard" ng-controller="FilmsController">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h2 class="section-heading">cartelera</h2>
+                    <h3 class="section-subheading text-muted">Todas las novedades a tu alcance</h3>
+                </div>
+            </div>
+            <div class="row">
+
+                <div class="col-md-4 col-sm-6 portfolio-item" ng-repeat="movie in movies">
+                    <a ng-href="#{{movie.id}}" class="portfolio-link" data-toggle="modal">
+                        <div class="portfolio-hover">
+                            <div class="portfolio-hover-content">
+                                <i class="fa fa-plus fa-3x"></i>
+                            </div>
+                        </div>
+                        <img ng-src="img/cartelera/{{movie.img}}" class="img-responsive film" alt="">
+                    </a>
+                    <div class="portfolio-caption">
+                        <h4>{{ movie.name }}</h4>
+                        <p class="text-muted"><span ng-repeat="director in movie.directors">{{ $index != movie.directors.length - 1 ? director.name + ' ' + director.surname + ', ' : director.name + ' ' + director.surname }}</span></p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Price Grid Section -->
+    <section id="prices" class="bg-light-gray">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h2 class="section-heading">Precios</h2>
+                    <h3 class="section-subheading text-muted">Consulta los mejores precios</h3>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <table border="2" class="table text-center">
+                        <tbody>
+                            <tr>
+                                <th class="blue bg-gray text-center">Sesiones</th>
+                                <th class="blue bg-gray text-center"></th>
+                                <th class="blue bg-gray text-center">Socios</th>
+                                <th class="blue bg-gray text-center">No Socios</th>
+                            </tr>
+                            <tr>
+                                <td rowspan="2" class="v-align">Lunes</td>
+                                <td>Mayor de 60 años</td>
+                                <td>3,00 €</td>
+                                <td>4,50 €</td>
+                            </tr>
+                            <tr>
+                                <td>General</td>
+                                <td>4,00 €</td>
+                                <td>7,00 €</td>
+                            </tr>
+                            <tr>
+                                <td>Martes</td>
+                                <td>Día del espectador V.O.</td>
+                                <td>3,00 €</td>
+                                <td>4,50 €</td>
+                            </tr>
+                            <tr>
+                                <td>Miercoles</td>
+                                <td>Día del espectador V.Doblada</td>
+                                <td>3,00 €</td>
+                                <td>4,50 €</td>
+                            </tr>
+                            <tr>
+                                <td rowspan="2" class="v-align">Jueves</td>
+                                <td>Menor de 30 años (Cartelera en V.O. )</td>
+                                <td>3,00 €</td>
+                                <td>4,50 €</td>
+                            </tr>
+                            <tr>
+                                <td>General</td>
+                                <td>4,00 €</td>
+                                <td>7,00 €</td>
+                            </tr>
+                            <tr>
+                                <td>Viernes, Sabado, Domingo y Festivos</td>
+                                <td>&nbsp;</td>
+                                <td>4,50 €</td>
+                                <td>8,00 €</td>
+                            </tr>
+                            <tr>
+                                <td>Primera sesión Sábado y Domingo</td>
+                                <td>&nbsp;</td>
+                                <td>4,00 €</td>
+                                <td>7,00 €</td>
+                            </tr>
+                            <tr>
+                                <td>Pases infantiles</td>
+                                <td>2º sábado de cada mes, evento matinal</td>
+                                <td>4,00 € (*) </td>
+                                <td>6,00 €</td>
+                            </tr>
+                            <tr>
+                                <td>Último pase Domingos y Festivos</td>
+                                <td>&nbsp;</td>
+                                <td>4,00 €</td>
+                                <td>7,00 €</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Coming Soon Section -->
+    <section id="coming-soon" ng-controller="FilmsController">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h2 class="section-heading">Próximamente</h2>
+                    <h3 class="section-subheading text-muted">Estrenos que están por venir</h3>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <ul class="timeline">
+                        <li ng-class="{'timeline-inverted' : $index%2 == 0}" ng-repeat="movie in comingSoon">
+                            <div class="timeline-image">
+                                <img class="img-circle img-responsive img-custom" ng-src="img/cartelera/{{movie.img}}" alt="">
+                            </div>
+                            <div class="timeline-panel">
+                                <div class="timeline-heading">
+                                    <h4 ng-bind="movie.release | date:'dd/MM/yyyy'"></h4>
+                                    <h4 class="subheading">{{movie.name}}</h4>
+                                </div>
+                                <div class="timeline-body">
+                                    <p class="text-muted"><span ng-repeat="director in movie.directors">{{ $index != movie.directors.length - 1 ? director.name + ' ' + director.surname + ', ' : director.name + ' ' + director.surname }}</span></p>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Clients Aside -->
+    <aside class="clients bg-light-gray">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3 col-sm-6">
+                    <a href="https://www.cocacola.es/home/" target="_blank">
+                        <img src="img/logos/cocacola.png" class="img-responsive img-centered img-client" alt="">
+                    </a>
+                </div>
+                <div class="col-md-3 col-sm-6">
+                    <a href="http://www.dolby.com/us/en/platforms/dolby-cinema.html" target="_blank">
+                        <img src="img/logos/dolby.png" class="img-responsive img-centered img-client" alt="">
+                    </a>
+                </div>
+                <div class="col-md-3 col-sm-6">
+                    <a href="http://www.imax.com/es/theatres" target="_blank">
+                        <img src="img/logos/imax.png" class="img-responsive img-centered img-client" alt="">
+                    </a>
+                </div>
+                <div class="col-md-3 col-sm-6">
+                    <a href="http://www.iberia.es" target="_blank">
+                        <img src="img/logos/iberia.png" class="img-responsive img-centered img-client" alt="">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </aside>
+    
+    <!-- Contact Section -->
+    <section id="contact">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h2 class="section-heading">Contacto</h2>
+                    <h3 class="section-subheading text-muted">Contacta con nosotros para preguntarnos cualquier duda</h3>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <form name="sentMessage" id="contactForm" novalidate>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <input type="text" class="form-control" placeholder="Tu nombre*" id="name" required data-validation-required-message="Porfavor añade tu nombre.">
+                                    <p class="help-block text-danger"></p>
+                                </div>
+                                <div class="form-group">
+                                    <input type="email" class="form-control" placeholder="Tu email *" id="email" required data-validation-required-message="Porfavor añade tu dirección de correo.">
+                                    <p class="help-block text-danger"></p>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <textarea class="form-control" placeholder="Mensaje *" id="message" required data-validation-required-message="Porfavor añade un mensaje."></textarea>
+                                    <p class="help-block text-danger"></p>
+                                </div>
+                            </div>
+                            <div class="clearfix"></div>
+                            <div class="col-lg-12 text-center">
+                                <div id="success"></div>
+                                <button type="submit" class="btn btn-xl">Enviar</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <span class="copyright">Copyright &copy; Cines Zoco Majadahonda 2016</span>
+                </div>
+                <div class="col-md-4">
+                    <ul class="list-inline social-buttons">
+                        <li>
+                            <a href="https://twitter.com/cineszoco" target="_blank"><i class="fa fa-twitter"></i></a>
+                        </li>
+                        <li>
+                            <a href="https://www.facebook.com/cinezocomajadahonda" target="_blank"><i class="fa fa-facebook"></i></a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <ul class="list-inline quicklinks">
+                        <li><a href="#">Política de Privacidad</a>
+                        </li>
+                        <li><a href="#">Términos de Uso</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Films Modal -->
+    <div ng-controller="FilmsController">
+        <div ng-repeat="movie in movies">
+            <div class="portfolio-modal modal fade" ng-attr-id="{{movie.id}}" tabindex="-1" role="dialog" aria-hidden="true">
+                <div class="modal-content">
+                    <div class="close-modal" data-dismiss="modal">
+                        <div class="lr">
+                            <div class="rl">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-lg-8 col-lg-offset-2">
+                                <h2>{{movie.name}}</h2>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-4 col-lg-offset-2">
+                                <div class="modal-body">
+                                    <img class="img-responsive img-centered img-billboard" ng-src="img/cartelera/{{movie.img}}" alt=""> 
+                                </div>
+                            </div>
+                            <div class="col-lg-4">
+                                <div class="modal-body film-description">
+                                    <p><i class="fa fa-clock-o blue margin-icon"></i><strong>Duración:</strong> {{movie.duration}} min</p>
+                                    <p><i class="fa fa-flag blue margin-icon"></i><strong>País:</strong> {{movie.country}}</p>
+                                    <p><i class="fa fa-tag blue margin-icon"></i><strong>Género:</strong> {{movie.gender}}</p>               
+                                    <p><i class="fa fa-calendar blue margin-icon"></i><strong>Estreno:</strong> <span ng-bind="movie.release | date:'dd/MM/yyyy'"></span></p>
+                                    <p><i class="fa fa-bullhorn blue margin-icon"></i></i><strong>Directores:</strong><span ng-repeat="director in movie.directors"> {{ $index != movie.directors.length - 1 ? director.name + ' ' + director.surname + ', ' : director.name + ' ' + director.surname }}</span></p>
+                                    <p><i class="fa fa-users blue margin-icon"></i><strong>Actores:</strong><span ng-repeat="actor in movie.actors"> {{ $index != movie.actors.length - 1 ? actor.name + ' ' + actor.surname + ', ' : actor.name + ' ' + actor.surname }}</span></p>
+                                    <p><i class="fa fa-film blue margin-icon"></i><strong>Productores:</strong> {{movie.producers}}</p>
+                                    <button type="button" class="btn btn-primary" data-dismiss="modal"><i class="fa fa-times"></i> Cerrar Película</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-8 col-lg-offset-2">
+                                <p class="film-description">
+                                   <strong>Sinopsis:</strong> {{movie.description}}
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </body>
+    </div>
+
+    </div>
+    <!-- jQuery -->
+    <script src="lib/jquery/jquery.js"></script>
+    <!-- URI -->
+    <script src="node_modules/URIjs/src/URI.min.js"></script>
+    <!-- Angular -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
+    <script src="dist/script.min.js"></script>
+
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="lib/bootstrap/js/bootstrap.min.js"></script>
+
+    <!-- Plugin JavaScript -->
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+    <script src="lib/bootstrap/js/classie.js"></script>
+    <script src="lib/bootstrap/js/cbpAnimatedHeader.js"></script>
+
+    <!-- Contact Form JavaScript -->
+    <script src="lib/bootstrap/js/jqBootstrapValidation.js"></script>
+    <script src="lib/bootstrap/js/contact_me.js"></script>
+
+    <!-- Custom Theme JavaScript -->
+    <script src="lib/bootstrap/js/agency.js"></script>
+
+</body>
+
+</html>
